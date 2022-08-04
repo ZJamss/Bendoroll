@@ -21,8 +21,8 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
 
 ## QuickStart
 
-### complie the source code to generate *.jar file
-import this by maven , gradle, or move it to your lib-dir
+### complie the source code to generate `*.jar` file
+import this by `maven` , `gradle`, or move it to your lib-dir
 
 ### Start Programming
 This example to build and run a simple web application
@@ -70,7 +70,7 @@ public class Main {
 }
 ```
 
-#### Build a ExceptionHandler to handle some exception in the api
+#### Build a `ExceptionHandler` to handle some exception in the api
 ```java
 public class Main {
     public static void main(String[] args) {
