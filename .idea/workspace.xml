@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="78b5fa2a-592a-4827-9bda-a239e368e058" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/Bendoroll.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/central/DispatcherServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/context/Context.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/context/DefaultHttpContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/context/HttpContext.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/exception/BaseException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/exception/ExceptionHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/exception/ExceptionMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/handler/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/handler/HandlerMapping.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/zjamss/bendoroll/handler/HandlerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/cn/zjamss/bendoroll/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="78b5fa2a-592a-4827-9bda-a239e368e058" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,7 +104,7 @@
       <workItem from="1659612043949" duration="1000" />
       <workItem from="1659612155930" duration="114000" />
       <workItem from="1659612277917" duration="125000" />
-      <workItem from="1659612415245" duration="3704000" />
+      <workItem from="1659612415245" duration="4175000" />
     </task>
     <servers />
   </component>
