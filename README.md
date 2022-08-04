@@ -9,14 +9,14 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
 
 
 ## Features:
-  - Simplify
-  - OOTB 
-  - Get started quickly
-  - Can be used for learning
-  - Less code amount
-  - Also no @Annotation
-  - Also no reflection
-  - Just function
+  - 😎 Simplify
+  - 😍 OOTB 
+  - 🚀 Get started quickly
+  - 📕 Can be used for learning
+  - ✌️ Less code amount
+  - 🦾 Also no @Annotation
+  - ❤️ Also no reflection
+  - 😀 Just function
   
   You just need call some function , so easy
 
