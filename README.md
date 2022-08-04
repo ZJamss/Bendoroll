@@ -2,6 +2,7 @@
 卷
 
 A lightweight java-web framework,reference from [simplify_mvc](https://github.com/ZJamss/Simplify_MVC) and [javalin](https://github.com/javalin/javalin)
+
 一款轻量级java-web框架，参考自SpringMVC与Javalin
 
 ## Continually updated
