@@ -1,11 +1,10 @@
-# Bendoroll
-卷
+# Bendoroll - A lightweight java-web framework
 
 A lightweight java-web framework,reference from [simplify_mvc](https://github.com/ZJamss/Simplify_MVC) and [javalin](https://github.com/javalin/javalin)
 
 一款轻量级java-web框架，参考自SpringMVC与Javalin
 
-## Continually updated
+ > Continually updated
 
 
 ## Features:
@@ -41,7 +40,7 @@ public class Main {
 ### Examples
 There exist some examples about how to use the framework
 
-#### Build some restulf api
+#### Build some restful api
 ```java
 public class Main {
     public static void main(String[] args) {
