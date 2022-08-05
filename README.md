@@ -4,7 +4,7 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
 
 一款轻量级java-web框架，参考自SpringMVC与Javalin
 
- > Continually updated
+ > Updated Continually 
 
 
 ## Features:
@@ -17,7 +17,7 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
   - ❤️ Also no reflection
   - 😀 Just function
   
-  You just need call some function , so easy
+  You just need call some functions , so easy
 
 ## QuickStart
 
@@ -70,7 +70,7 @@ public class Main {
 }
 ```
 
-#### Build a `ExceptionHandler` to handle some exception in the api
+#### Build an `ExceptionHandler` to handle some exceptions in the api
 ```java
 public class Main {
     public static void main(String[] args) {
