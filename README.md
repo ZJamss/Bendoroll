@@ -1,28 +1,28 @@
-# Bendoroll
-卷
+# Bendoroll - A lightweight java-web framework
 
 A lightweight java-web framework,reference from [simplify_mvc](https://github.com/ZJamss/Simplify_MVC) and [javalin](https://github.com/javalin/javalin)
+
 一款轻量级java-web框架，参考自SpringMVC与Javalin
 
-## Continually updated
+ > Updated Continually 
 
 
 ## Features:
-  - Simplify
-  - OOTB 
-  - Get started quickly
-  - Can be used for learning
-  - Less code amount
-  - Also no @Annotation
-  - Also no reflection
-  - Just function
+  - 😎 Simplify
+  - 😍 OOTB 
+  - 🚀 Get started quickly
+  - 📕 Can be used for learning
+  - ✌️ Less code amount
+  - 🦾 Also no @Annotation
+  - ❤️ Also no reflection
+  - 😀 Just function
   
-  You just need call some function , so easy
+  You just need call some functions , so easy
 
 ## QuickStart
 
-### complie the source code to generate *.jar file
-import this by maven , gradle, or move it to your lib-dir
+### complie the source code to generate `*.jar` file
+import this by `maven` , `gradle`, or move it to your lib-dir
 
 ### Start Programming
 This example to build and run a simple web application
@@ -40,7 +40,7 @@ public class Main {
 ### Examples
 There exist some examples about how to use the framework
 
-#### Build some restulf api
+#### Build some restful api
 ```java
 public class Main {
     public static void main(String[] args) {
@@ -70,7 +70,7 @@ public class Main {
 }
 ```
 
-#### Build a ExceptionHandler to handle some exception in the api
+#### Build an `ExceptionHandler` to handle some exceptions in the api
 ```java
 public class Main {
     public static void main(String[] args) {
