@@ -2,8 +2,10 @@ package com.zjamss.bendoroll;
 
 import com.zjamss.bendoroll.central.DispatcherServlet;
 import com.zjamss.bendoroll.context.Context;
+import com.zjamss.bendoroll.context.HttpContext;
 import com.zjamss.bendoroll.exception.ExceptionHandler;
 import com.zjamss.bendoroll.exception.ExceptionMapper;
+import com.zjamss.bendoroll.handler.AspectHandler;
 import com.zjamss.bendoroll.handler.Handler;
 import com.zjamss.bendoroll.handler.HandlerMapping;
 import com.zjamss.bendoroll.handler.HandlerType;
@@ -11,6 +13,9 @@ import com.zjamss.bendoroll.wrapper.Lifecycle;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
+
+import javax.servlet.ServletException;
+import java.io.IOException;
 
 /**
  * @Program: cn.zjamss.bendoroll
@@ -24,6 +29,8 @@ public class Bendoroll {
 
     private boolean STARTED = false;
     private int port = 8080;
+
+    private static final DispatcherServlet dispatcherServlet = new DispatcherServlet();
 
 
     protected Bendoroll(int port) {
@@ -51,7 +58,7 @@ public class Bendoroll {
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
-        context.addServlet(new ServletHolder(new DispatcherServlet()), "/");
+        context.addServlet(new ServletHolder(dispatcherServlet), "/");
         try {
             server.start();
             server.join();
@@ -93,8 +100,8 @@ public class Bendoroll {
         return this;
     }
 
-    public Bendoroll interceptor(Lifecycle lifecycle, String path, Handler handler) {
-        Context.putInterceptor(lifecycle, path, handler);
+    public Bendoroll aspect(Lifecycle lifecycle, String path, AspectHandler handler) {
+        Context.putAspect(lifecycle, path, handler);
         return this;
     }
 }

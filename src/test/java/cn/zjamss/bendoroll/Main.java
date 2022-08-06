@@ -22,26 +22,37 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Bendoroll app = Bendoroll.create();
+        app.get("/u",ctx -> {
+            ctx.html("哈哈哈");
+        });
+        app.get("/u1",ctx -> {
+            ctx.json("{\"a\":\"哈哈哈\"}");
+        });
         app.get("/", ctx -> {
-            ctx.ok().put("person", new Person("ZJamss", 19, "Dont have delusion"));
-            throw new BaseException("123");
+            ctx.ok().put("person", new Person(ctx.param("name"), 19, "Dont have delusion"));
         });
-        app.interceptor(Lifecycle.AROUND, "/", ctx -> {
+        app.aspect(Lifecycle.AROUND, "/", ctx -> {
             ctx.ok().put("around","around");
+            return true;
         });
-        app.interceptor(Lifecycle.BEFORE, "/", ctx -> {
+        app.aspect(Lifecycle.BEFORE, "/", ctx -> {
             ctx.ok().put("before","before");
+            if(ctx.param("name") == null){
+                ctx.error(400,"别来沾边");
+            }
+            return false;
         });
-        app.interceptor(Lifecycle.AFTER, "/", ctx -> {
+        app.aspect(Lifecycle.AFTER, "/", ctx -> {
             ctx.ok().put("after","after");
+            return true;
         });
-        app.interceptor(Lifecycle.EXCEPTION, "/", ctx -> {
+        app.aspect(Lifecycle.EXCEPTION, "/", ctx -> {
             ctx.ok().put("exception","exception");
+            return true;
         });
         app.exception(BaseException.class, (e, ctx) -> {
             ctx.html("error");
         });
-
         app.start();
     }
 

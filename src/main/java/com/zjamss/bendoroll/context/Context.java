@@ -3,6 +3,7 @@ package com.zjamss.bendoroll.context;
 import com.zjamss.bendoroll.exception.BaseException;
 import com.zjamss.bendoroll.exception.ExceptionHandler;
 import com.zjamss.bendoroll.exception.ExceptionMapper;
+import com.zjamss.bendoroll.handler.AspectHandler;
 import com.zjamss.bendoroll.handler.Handler;
 import com.zjamss.bendoroll.handler.HandlerMapping;
 import com.zjamss.bendoroll.handler.HandlerType;
@@ -27,7 +28,7 @@ public class Context {
     private static final Map<String, HandlerMapping> handlerMappings = new HashMap<>();
     private static final Map<Class<? extends Exception>, ExceptionMapper> exceptionMappers = new HashMap<>();
 
-    private static final Map<String, Handler> interceptors = new HashMap<>();
+    private static final Map<String, AspectHandler> aspects = new HashMap<>();
 
     static {
         init();
@@ -73,16 +74,16 @@ public class Context {
         return exceptionMapper;
     }
 
-    public static void putInterceptor(Lifecycle lifecycle, String path, Handler handler) {
-        interceptors.put(path + lifecycle, handler);
+    public static void putAspect(Lifecycle lifecycle, String path, AspectHandler handler) {
+        aspects.put(path + lifecycle, handler);
     }
 
-    public static Handler matchInterceptor(Lifecycle lifecycle, String path) {
-        Handler interceptor = interceptors.get(path + lifecycle);
-        if(interceptor == null){
-            interceptor = ctx -> {};
+    public static AspectHandler matchInterceptor(Lifecycle lifecycle, String path) {
+        AspectHandler aspect = aspects.get(path + lifecycle);
+        if(aspect == null){
+            aspect = ctx -> true;
         }
-        return interceptor;
+        return aspect;
     }
 
 

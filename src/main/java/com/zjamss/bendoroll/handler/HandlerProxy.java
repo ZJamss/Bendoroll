@@ -22,16 +22,16 @@ public class HandlerProxy implements Handler {
 
     @Override
     public void handle(HttpContext ctx) throws Exception {
-        Context.matchInterceptor(Lifecycle.AROUND, ctx.req().getRequestURI()).handle(ctx);
-        Context.matchInterceptor(Lifecycle.BEFORE, ctx.req().getRequestURI()).handle(ctx);
-        try {
-            handler.handle(ctx);
-            Context.matchInterceptor(Lifecycle.AFTER, ctx.req().getRequestURI()).handle(ctx);
-            Context.matchInterceptor(Lifecycle.AROUND, ctx.req().getRequestURI()).handle(ctx);
-        } catch (Exception e) {
-            Context.matchInterceptor(Lifecycle.EXCEPTION, ctx.req().getRequestURI()).handle(ctx);
-            throw e;
-        }
+        if (Context.matchInterceptor(Lifecycle.AROUND, ctx.req().getRequestURI()).handle(ctx))
+            if (Context.matchInterceptor(Lifecycle.BEFORE, ctx.req().getRequestURI()).handle(ctx))
+                try {
+                    handler.handle(ctx);
+                    Context.matchInterceptor(Lifecycle.AFTER, ctx.req().getRequestURI()).handle(ctx);
+                    Context.matchInterceptor(Lifecycle.AROUND, ctx.req().getRequestURI()).handle(ctx);
+                } catch (Exception e) {
+                    Context.matchInterceptor(Lifecycle.EXCEPTION, ctx.req().getRequestURI()).handle(ctx);
+                    throw e;
+                }
     }
 
     public HttpServletWrapper invoke(HttpContext ctx) throws Exception {

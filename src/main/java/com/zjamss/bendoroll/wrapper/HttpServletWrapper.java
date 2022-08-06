@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @Program: cn.zjamss.bendoroll
@@ -16,14 +17,14 @@ public class HttpServletWrapper {
     private HttpServletResponse httpServletResponse;
 
     private HttpServletRequest httpServletRequest;
-    private ContentType ContentType;
+    private ContentType contentType;
     private Object data;
 
     public void wrapper() {
         try {
-            httpServletResponse.getWriter().print(data);
-            httpServletResponse.setContentType(ContentType.getValue());
+            httpServletResponse.setContentType(contentType.getValue());
             httpServletResponse.setCharacterEncoding("UTF-8");
+            httpServletResponse.getWriter().print(data);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -32,7 +33,7 @@ public class HttpServletWrapper {
     public HttpServletWrapper(HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest, com.zjamss.bendoroll.wrapper.ContentType contentType, String data) {
         this.httpServletResponse = httpServletResponse;
         this.httpServletRequest = httpServletRequest;
-        ContentType = contentType;
+        this.contentType = contentType;
         this.data = data;
     }
 
@@ -45,11 +46,11 @@ public class HttpServletWrapper {
     }
 
     public com.zjamss.bendoroll.wrapper.ContentType getContentType() {
-        return ContentType;
+        return contentType;
     }
 
     public void setContentType(com.zjamss.bendoroll.wrapper.ContentType contentType) {
-        ContentType = contentType;
+        this.contentType = contentType;
     }
 
     public Object getData() {
@@ -57,7 +58,7 @@ public class HttpServletWrapper {
     }
 
     public void setData(Object data) {
-        if (ContentType == com.zjamss.bendoroll.wrapper.ContentType.APPLICATION_JSON)
+        if (contentType == ContentType.APPLICATION_JSON && !(data instanceof String))
             data = new Gson().toJson(data);
         this.data = data;
     }
