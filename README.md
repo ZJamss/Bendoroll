@@ -6,6 +6,11 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
 
  > Updated Continually 
 
+## TODO:
+
+- [x] Lifecycle AOP
+- [ ] file response support
+- [ ] any more...
 
 ## Features:
   - 😎 Simplify
@@ -16,7 +21,7 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
   - 🦾 Also no @Annotation
   - ❤️ Also no reflection
   - 😀 Just function
-  
+
   You just need call some functions , so easy
 
 ## QuickStart
