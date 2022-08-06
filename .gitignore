@@ -62,3 +62,9 @@ build/
 ### Mac OS ###
 .DS_Store
 >>>>>>> 83e2508 (init)
+
+**/.idea/
+
+/src/test/
+
+/src/main/resources/public/*
