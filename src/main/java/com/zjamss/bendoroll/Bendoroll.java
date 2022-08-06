@@ -7,6 +7,7 @@ import com.zjamss.bendoroll.exception.ExceptionMapper;
 import com.zjamss.bendoroll.handler.Handler;
 import com.zjamss.bendoroll.handler.HandlerMapping;
 import com.zjamss.bendoroll.handler.HandlerType;
+import com.zjamss.bendoroll.wrapper.Lifecycle;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -89,6 +90,11 @@ public class Bendoroll {
 
     public Bendoroll exception(Class<? extends Exception> exception, ExceptionHandler handler) {
         Context.putMapper(exception, new ExceptionMapper(handler, exception));
+        return this;
+    }
+
+    public Bendoroll interceptor(Lifecycle lifecycle, String path, Handler handler) {
+        Context.putInterceptor(lifecycle, path, handler);
         return this;
     }
 }

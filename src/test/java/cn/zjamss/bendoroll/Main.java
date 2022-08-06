@@ -7,6 +7,7 @@ import com.zjamss.bendoroll.exception.BaseException;
 import com.zjamss.bendoroll.handler.Handler;
 import com.zjamss.bendoroll.handler.HandlerType;
 import com.zjamss.bendoroll.wrapper.HttpServletWrapper;
+import com.zjamss.bendoroll.wrapper.Lifecycle;
 import org.eclipse.jetty.server.Authentication;
 
 import java.util.ArrayList;
@@ -21,16 +22,34 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         Bendoroll app = Bendoroll.create();
-        app.get("/",ctx -> {
-           ctx.json("{\"msg\":\"123\",\"code\":200}");
+        app.get("/", ctx -> {
+            ctx.ok().put("person", new Person("ZJamss", 19, "Dont have delusion"));
+            throw new BaseException("123");
         });
+        app.interceptor(Lifecycle.AROUND, "/", ctx -> {
+            ctx.ok().put("around","around");
+        });
+        app.interceptor(Lifecycle.BEFORE, "/", ctx -> {
+            ctx.ok().put("before","before");
+        });
+        app.interceptor(Lifecycle.AFTER, "/", ctx -> {
+            ctx.ok().put("after","after");
+        });
+        app.interceptor(Lifecycle.EXCEPTION, "/", ctx -> {
+            ctx.ok().put("exception","exception");
+        });
+        app.exception(BaseException.class, (e, ctx) -> {
+            ctx.html("error");
+        });
+
         app.start();
     }
 
-    static class Person{
+    static class Person {
         String name;
         int age;
-        String tel;;
+        String tel;
+        ;
 
         public Person(String name, int age, String tel) {
             this.name = name;

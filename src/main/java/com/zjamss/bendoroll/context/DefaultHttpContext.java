@@ -111,4 +111,9 @@ public class DefaultHttpContext implements HttpContext {
         return result;
     }
 
+//    @Override
+//    public void file(String fileName) throws IOException {
+//        String path = "/public/"+fileName;
+//        res.sendRedirect(path);
+//    }
 }

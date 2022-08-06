@@ -13,5 +13,5 @@ import com.zjamss.bendoroll.wrapper.HttpServletWrapper;
 @FunctionalInterface
 public interface Handler {
 
-    void handle(@NotNull HttpContext ctx);
+    void handle(@NotNull HttpContext ctx) throws Exception;
 }

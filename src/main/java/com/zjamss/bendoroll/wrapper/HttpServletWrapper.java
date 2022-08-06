@@ -1,5 +1,7 @@
 package com.zjamss.bendoroll.wrapper;
 
+import com.google.gson.Gson;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -55,6 +57,8 @@ public class HttpServletWrapper {
     }
 
     public void setData(Object data) {
+        if (ContentType == com.zjamss.bendoroll.wrapper.ContentType.APPLICATION_JSON)
+            data = new Gson().toJson(data);
         this.data = data;
     }
 }
