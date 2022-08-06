@@ -10,6 +10,7 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
 
 - [x] Lifecycle AOP
 - [ ] file response support
+- [ ] log
 - [ ] any more...
 
 ## Features:
