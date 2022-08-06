@@ -2,6 +2,7 @@ package com.zjamss.bendoroll.context;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
 public interface HttpContext {
 
@@ -9,11 +10,9 @@ public interface HttpContext {
 
     HttpServletResponse res();
 
-    String queryParam(String key);
+    String param(String key);
 
-    String[] queryParams(String key);
-
-    String formParam(String key);
+    String[] params(String key);
 
     <T> T body(Class<T> clazz);
 
@@ -22,10 +21,13 @@ public interface HttpContext {
 
     void json(String json);
 
-    void json(Object o);
+    Map<String, Object> ok(int code, String msg);
 
-    void ok();
+    Map<String, Object> ok();
 
-    void error();
+    Map<String, Object> error();
+
+    Map<String, Object> error(int code,String msg);
+
 
 }

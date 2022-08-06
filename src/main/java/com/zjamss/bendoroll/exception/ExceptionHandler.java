@@ -11,5 +11,5 @@ import com.zjamss.bendoroll.context.HttpContext;
  **/
 @FunctionalInterface
 public interface ExceptionHandler {
-    void handler(Exception e, HttpContext ctx);
+    void handle(Exception e, HttpContext ctx);
 }

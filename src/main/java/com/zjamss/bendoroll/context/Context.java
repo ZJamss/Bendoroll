@@ -25,7 +25,6 @@ public class Context {
 
     public static void putMapping(String path, HandlerType handlerType, HandlerMapping mapping) {
         handlerMappings.put(path + handlerType, mapping);
-
     }
 
     public static HandlerMapping matchMapping(String path, HandlerType handlerType) {

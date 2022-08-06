@@ -5,7 +5,10 @@ import com.zjamss.bendoroll.context.DefaultHttpContext;
 import com.zjamss.bendoroll.exception.ExceptionMapper;
 import com.zjamss.bendoroll.handler.Handler;
 import com.zjamss.bendoroll.handler.HandlerMapping;
+import com.zjamss.bendoroll.handler.HandlerProxy;
 import com.zjamss.bendoroll.handler.HandlerType;
+import com.zjamss.bendoroll.wrapper.ContentType;
+import com.zjamss.bendoroll.wrapper.HttpServletWrapper;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -36,16 +39,19 @@ public class DispatcherServlet extends HttpServlet {
     }
 
     void doProcess(HttpServletRequest req, HttpServletResponse res, Handler handler) {
+        final HandlerProxy proxy = new HandlerProxy(handler);
+        HttpServletWrapper wrapper = new HttpServletWrapper(res,req, ContentType.APPLICATION_JSON,"");
         try {
-            handler.handle(new DefaultHttpContext(req, res));
+            wrapper = proxy.invoke(new DefaultHttpContext(wrapper));
         } catch (Exception e) {
             final ExceptionMapper exceptionMapper = Context.matchMapper(e.getClass());
             if (exceptionMapper != null) {
-                exceptionMapper.getExceptionHandler().handler(e, new DefaultHttpContext(req, res));
+                  exceptionMapper.getExceptionHandler().handle(e, new DefaultHttpContext(wrapper));
             } else {
                 throw e;
             }
         }
+        wrapper.wrapper();
     }
 
 }
