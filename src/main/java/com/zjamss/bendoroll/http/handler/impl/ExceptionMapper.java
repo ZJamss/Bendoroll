@@ -1,4 +1,6 @@
-package com.zjamss.bendoroll.exception;
+package com.zjamss.bendoroll.http.handler.impl;
+
+import com.zjamss.bendoroll.http.handler.ExceptionHandler;
 
 /**
  * @Program: cn.zjamss.bendoroll

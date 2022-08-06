@@ -1,4 +1,4 @@
-package com.zjamss.bendoroll.handler;
+package com.zjamss.bendoroll.constant;
 
 public enum HandlerType {
 

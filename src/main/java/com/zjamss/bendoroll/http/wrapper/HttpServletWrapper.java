@@ -1,11 +1,11 @@
-package com.zjamss.bendoroll.wrapper;
+package com.zjamss.bendoroll.http.wrapper;
 
 import com.google.gson.Gson;
+import com.zjamss.bendoroll.constant.ContentType;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 /**
  * @Program: cn.zjamss.bendoroll
@@ -30,7 +30,7 @@ public class HttpServletWrapper {
         }
     }
 
-    public HttpServletWrapper(HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest, com.zjamss.bendoroll.wrapper.ContentType contentType, String data) {
+    public HttpServletWrapper(HttpServletResponse httpServletResponse, HttpServletRequest httpServletRequest, ContentType contentType, String data) {
         this.httpServletResponse = httpServletResponse;
         this.httpServletRequest = httpServletRequest;
         this.contentType = contentType;
@@ -45,11 +45,11 @@ public class HttpServletWrapper {
         return httpServletRequest;
     }
 
-    public com.zjamss.bendoroll.wrapper.ContentType getContentType() {
+    public ContentType getContentType() {
         return contentType;
     }
 
-    public void setContentType(com.zjamss.bendoroll.wrapper.ContentType contentType) {
+    public void setContentType(ContentType contentType) {
         this.contentType = contentType;
     }
 

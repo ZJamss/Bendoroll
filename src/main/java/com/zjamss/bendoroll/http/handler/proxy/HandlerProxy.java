@@ -1,10 +1,11 @@
-package com.zjamss.bendoroll.handler;
+package com.zjamss.bendoroll.http.handler.proxy;
 
 import com.zjamss.bendoroll.context.Context;
-import com.zjamss.bendoroll.context.DefaultHttpContext;
-import com.zjamss.bendoroll.context.HttpContext;
-import com.zjamss.bendoroll.wrapper.HttpServletWrapper;
-import com.zjamss.bendoroll.wrapper.Lifecycle;
+import com.zjamss.bendoroll.http.context.impl.DefaultHttpContext;
+import com.zjamss.bendoroll.http.context.HttpContext;
+import com.zjamss.bendoroll.http.handler.Handler;
+import com.zjamss.bendoroll.http.wrapper.HttpServletWrapper;
+import com.zjamss.bendoroll.constant.Lifecycle;
 
 /**
  * @Program: cn.zjamss.bendoroll

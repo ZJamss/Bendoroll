@@ -1,4 +1,4 @@
-package com.zjamss.bendoroll.context;
+package com.zjamss.bendoroll.http.context;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

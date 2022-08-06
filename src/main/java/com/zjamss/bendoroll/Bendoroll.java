@@ -1,21 +1,17 @@
 package com.zjamss.bendoroll;
 
-import com.zjamss.bendoroll.central.DispatcherServlet;
+import com.zjamss.bendoroll.http.servlet.DispatcherServlet;
 import com.zjamss.bendoroll.context.Context;
-import com.zjamss.bendoroll.context.HttpContext;
-import com.zjamss.bendoroll.exception.ExceptionHandler;
-import com.zjamss.bendoroll.exception.ExceptionMapper;
-import com.zjamss.bendoroll.handler.AspectHandler;
-import com.zjamss.bendoroll.handler.Handler;
-import com.zjamss.bendoroll.handler.HandlerMapping;
-import com.zjamss.bendoroll.handler.HandlerType;
-import com.zjamss.bendoroll.wrapper.Lifecycle;
+import com.zjamss.bendoroll.http.handler.ExceptionHandler;
+import com.zjamss.bendoroll.http.handler.impl.ExceptionMapper;
+import com.zjamss.bendoroll.http.handler.AspectHandler;
+import com.zjamss.bendoroll.http.handler.Handler;
+import com.zjamss.bendoroll.http.handler.impl.HandlerMapping;
+import com.zjamss.bendoroll.constant.HandlerType;
+import com.zjamss.bendoroll.constant.Lifecycle;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
-
-import javax.servlet.ServletException;
-import java.io.IOException;
 
 /**
  * @Program: cn.zjamss.bendoroll
@@ -50,6 +46,13 @@ public class Bendoroll {
         return create(8080);
     }
 
+    /**
+     * @return
+     * @Author ZJamss
+     * @Description Start Application
+     * @Date 2022/8/6 16:19
+     * @Param run-port
+     **/
     public Bendoroll start(int port) {
         if (this.STARTED) {
             throw new RuntimeException("服务已经启动");
@@ -69,11 +72,17 @@ public class Bendoroll {
         return this;
     }
 
+    /**
+     * Start Application
+     **/
     public Bendoroll start() {
         return start(this.port);
     }
 
 
+    /**
+     * build a api
+     **/
     public Bendoroll addHandler(HandlerType handlerType, String path, Handler handler) {
         Context.putMapping(path, handlerType, new HandlerMapping(handler, path, handlerType));
         return this;
@@ -95,11 +104,17 @@ public class Bendoroll {
         return this.addHandler(HandlerType.DELETE, path, handler);
     }
 
+    /**
+     * build a exceptionHandler
+     **/
     public Bendoroll exception(Class<? extends Exception> exception, ExceptionHandler handler) {
         Context.putMapper(exception, new ExceptionMapper(handler, exception));
         return this;
     }
 
+    /**
+     * build a handler to handle the lifecycle of api
+     **/
     public Bendoroll aspect(Lifecycle lifecycle, String path, AspectHandler handler) {
         Context.putAspect(lifecycle, path, handler);
         return this;

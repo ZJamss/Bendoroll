@@ -1,15 +1,13 @@
-package com.zjamss.bendoroll.context;
+package com.zjamss.bendoroll.http.context.impl;
 
 import com.google.gson.Gson;
-import com.zjamss.bendoroll.wrapper.ContentType;
-import com.zjamss.bendoroll.wrapper.HttpServletWrapper;
+import com.zjamss.bendoroll.http.context.HttpContext;
+import com.zjamss.bendoroll.constant.ContentType;
+import com.zjamss.bendoroll.http.wrapper.HttpServletWrapper;
 
 import javax.servlet.ServletInputStream;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;

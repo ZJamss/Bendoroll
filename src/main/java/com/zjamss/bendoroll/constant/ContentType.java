@@ -1,4 +1,4 @@
-package com.zjamss.bendoroll.wrapper;
+package com.zjamss.bendoroll.constant;
 
 /**
  * @Program: cn.zjamss.bendoroll
