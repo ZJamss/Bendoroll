@@ -9,7 +9,7 @@ A lightweight java-web framework,reference from [simplify_mvc](https://github.co
 ## TODO:
 
 - [x] Lifecycle AOP
-- [ ] file response support
+- [x] file response support
 - [ ] any more...
 
 ## Features:
@@ -71,7 +71,7 @@ public class Main {
         app.start();
     }
 
-    static class User{...}
+    static class User{}
 }
 ```
 
@@ -96,7 +96,7 @@ public class Main {
         app.start();
     }
     
-    static class User{...}
+    static class User{}
 }
 ```
 
@@ -133,7 +133,26 @@ public class Main {
         app.start();
     }
 
-    static class Person {...}
+    static class Person {}
 
+}
+```
+
+#### File access
+```java
+public class Main {
+
+    public static void main(String[] args) {
+        Bendoroll app = Bendorollmo
+                .create()
+                .fileAccess(true) //Default Off
+                .fileFolderName("static"); //Default `resources/public`
+        app.get("/index",ctx -> {
+            ctx.file("index.html");
+        });
+        //or access host:port/filename to view it online
+        //for example localhost:8080/index.html
+        app.start();
+    }
 }
 ```
