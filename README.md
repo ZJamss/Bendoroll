@@ -2,15 +2,14 @@
 
 A lightweight java-web framework,reference from [simplify_mvc](https://github.com/ZJamss/Simplify_MVC) and [javalin](https://github.com/javalin/javalin), just use for learning exchange ,I trust that you wont to use for production environment hah hah
 
-一款轻量级java-web框架，参考自SpringMVC与Javalin,基于函数式编程的思想，仅作学习交流使用
+一款轻量级java-web框架，参考自SpringMVC与Javalin，仅作学习交流使用
 
  > Updated Continually 
 
 ## TODO:
 
 - [x] Lifecycle AOP
-- [x] file response support
-- [ ] log
+- [ ] file response support
 - [ ] any more...
 
 ## Features:
@@ -138,20 +137,3 @@ public class Main {
 
 }
 ```
-
-#### Access files
-
-```java
-public class Main{
-    public static void main(String[] args) {
-        Bendoroll app = Bendoroll.create();
-        app.get("/index",ctx -> {
-            ctx.file("index.html");
-        });
-        //or access host:port/filename to view it online
-        //for example localhost:8080/index.html
-        app.start();
-    }
-}
-```
-
