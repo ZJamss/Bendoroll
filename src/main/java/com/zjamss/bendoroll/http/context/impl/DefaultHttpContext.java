@@ -1,6 +1,7 @@
 package com.zjamss.bendoroll.http.context.impl;
 
 import com.google.gson.Gson;
+import com.zjamss.bendoroll.Bendoroll;
 import com.zjamss.bendoroll.http.context.HttpContext;
 import com.zjamss.bendoroll.constant.ContentType;
 import com.zjamss.bendoroll.http.wrapper.HttpServletWrapper;
@@ -8,6 +9,7 @@ import com.zjamss.bendoroll.http.wrapper.HttpServletWrapper;
 import javax.servlet.ServletInputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
@@ -89,6 +91,7 @@ public class DefaultHttpContext implements HttpContext {
     public Map<String, Object> ok() {
         result.put("code", 200);
         result.put("msg", "success");
+        //set response data
         httpServletWrapper.setData(result);
         return result;
     }
@@ -109,9 +112,30 @@ public class DefaultHttpContext implements HttpContext {
         return result;
     }
 
-//    @Override
-//    public void file(String fileName) throws IOException {
-//        String path = "/public/"+fileName;
-//        res.sendRedirect(path);
-//    }
+    @Override
+    public void file(String fileName) {
+        File file = new File(Bendoroll.RESOURCE_PATH + Bendoroll.FOLDER_NAME + "/"+fileName);
+        if (file.exists()) {
+            try{
+                BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file)); ;
+                OutputStream os = null;
+                String fileSuffix = fileName.split("\\.")[1];
+                res.reset();
+                res.setCharacterEncoding("utf-8");
+                //match corresponding content-type
+                httpServletWrapper.setContentType(ContentType.getFilContentType(fileSuffix));
+                //return file
+                res.setHeader("Content-Disposition", "attachment; filename=" + fileName);
+                byte[] b = new byte[bis.available()];
+                bis.read(b);
+                httpServletWrapper.setData(b);
+                bis.close();
+            }catch (Exception e){
+                e.printStackTrace();
+                throw new RuntimeException(e.getMessage());
+            }
+        } else {
+            throw new RuntimeException("File"+file.getAbsolutePath()+"is not exist");
+        }
+    }
 }

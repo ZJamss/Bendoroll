@@ -66,5 +66,3 @@ build/
 **/.idea/
 
 /src/test/
-
-/src/main/resources/public/*

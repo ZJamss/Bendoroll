@@ -22,11 +22,15 @@ public class HttpServletWrapper {
 
     public void wrapper() {
         try {
+            //final response body
+            if (contentType == ContentType.APPLICATION_JSON && !(data instanceof String))
+                data = new Gson().toJson(data);
+
             httpServletResponse.setContentType(contentType.getValue());
             httpServletResponse.setCharacterEncoding("UTF-8");
             httpServletResponse.getWriter().print(data);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Wrapper Error");
         }
     }
 
@@ -58,8 +62,6 @@ public class HttpServletWrapper {
     }
 
     public void setData(Object data) {
-        if (contentType == ContentType.APPLICATION_JSON && !(data instanceof String))
-            data = new Gson().toJson(data);
         this.data = data;
     }
 }

@@ -1,5 +1,6 @@
 package com.zjamss.bendoroll;
 
+import com.zjamss.bendoroll.http.context.HttpContext;
 import com.zjamss.bendoroll.http.servlet.DispatcherServlet;
 import com.zjamss.bendoroll.context.Context;
 import com.zjamss.bendoroll.http.handler.ExceptionHandler;
@@ -13,6 +14,11 @@ import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
 /**
  * @Program: cn.zjamss.bendoroll
  * @Description:
@@ -21,10 +27,26 @@ import org.eclipse.jetty.servlet.ServletHolder;
  **/
 public class Bendoroll {
 
-    private static Bendoroll instance;
+    public static void main(String[] args) {
+        Bendoroll app = Bendoroll
+                .create()
+                .fileAccess(true)
+                .fileFolderName("static");
+        app.get("/index",ctx -> {
+            ctx.file("index.html");
+        });
+        //or access host:port/filename to view it online
+        //for example localhost:8080/index.html
+        app.start();
+    }
 
+    private static Bendoroll instance;
     private boolean STARTED = false;
     private int port = 8080;
+    public static boolean FILE_ENABLE = false;
+    public static final String RESOURCE_PATH = Bendoroll.class.getClassLoader().getResource("").getPath();
+    public static String FOLDER_NAME = "public";
+
 
     private static final DispatcherServlet dispatcherServlet = new DispatcherServlet();
 
@@ -55,7 +77,7 @@ public class Bendoroll {
      **/
     public Bendoroll start(int port) {
         if (this.STARTED) {
-            throw new RuntimeException("服务已经启动");
+            throw new RuntimeException("Server has already started");
         }
         Server server = new Server(port);
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -117,6 +139,20 @@ public class Bendoroll {
      **/
     public Bendoroll aspect(Lifecycle lifecycle, String path, AspectHandler handler) {
         Context.putAspect(lifecycle, path, handler);
+        return this;
+    }
+
+
+    /**
+     * enable to access file
+     **/
+    public Bendoroll fileAccess(boolean enable) {
+        FILE_ENABLE = enable;
+        return this;
+    }
+
+    public Bendoroll fileFolderName(String name){
+        FOLDER_NAME = name;
         return this;
     }
 }

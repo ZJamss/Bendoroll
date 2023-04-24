@@ -30,6 +30,6 @@ public interface HttpContext {
 
     Map<String, Object> error(int code,String msg);
 
-//    void file(String path) throws IOException;
+    void file(String fileName);
 
 }
