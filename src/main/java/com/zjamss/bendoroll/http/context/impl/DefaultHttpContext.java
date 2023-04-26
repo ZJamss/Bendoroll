@@ -54,7 +54,7 @@ public class DefaultHttpContext implements HttpContext {
     @Override
     public void html(String html) {
         httpServletWrapper.setContentType(ContentType.TEXT_HTML);
-        httpServletWrapper.setData(html);
+        httpServletWrapper.setData(html.getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
@@ -69,7 +69,7 @@ public class DefaultHttpContext implements HttpContext {
 
     @Override
     public void json(String json) {
-        httpServletWrapper.setData(json);
+        httpServletWrapper.setData(json.getBytes(StandardCharsets.UTF_8));
     }
 
     @Override
@@ -146,7 +146,6 @@ public class DefaultHttpContext implements HttpContext {
         if (file.exists()) {
             try {
                 BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file));
-                ;
                 OutputStream os = null;
                 String fileSuffix = fileName.split("\\.")[1];
                 res.reset();
