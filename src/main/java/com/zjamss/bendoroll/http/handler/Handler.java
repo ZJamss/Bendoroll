@@ -1,6 +1,5 @@
 package com.zjamss.bendoroll.http.handler;
 
-import com.sun.istack.internal.NotNull;
 import com.zjamss.bendoroll.http.context.HttpContext;
 
 /**
@@ -12,5 +11,5 @@ import com.zjamss.bendoroll.http.context.HttpContext;
 @FunctionalInterface
 public interface Handler {
 
-    void handle(@NotNull HttpContext ctx) throws Exception;
+    void handle( HttpContext ctx) throws Exception;
 }

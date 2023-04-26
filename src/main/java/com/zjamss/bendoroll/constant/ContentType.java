@@ -9,7 +9,9 @@ package com.zjamss.bendoroll.constant;
 public enum ContentType {
 
     TEXT_HTML("text/html;charset=utf-8"),
+    TEXT_CSS("text/css;charset=utf-8"),
     APPLICATION_JSON("application/json;charset=utf-8"),
+    APPLICATION_JS("application/javascript;charset=utf-8"),
     PDF("application/pdf;charset=utf-8"),
     DOC("application/msword;charset=utf-8"),
     XLS("application/octet-stream;charset=ISO8859-1"),
@@ -37,6 +39,10 @@ public enum ContentType {
                 return XLS;
             case "html":
                 return TEXT_HTML;
+            case "css":
+                return TEXT_CSS;
+            case "js":
+                return APPLICATION_JS;
             default:
                 return TEXT;
         }

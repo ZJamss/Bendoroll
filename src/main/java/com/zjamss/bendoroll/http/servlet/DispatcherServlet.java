@@ -13,9 +13,7 @@ import com.zjamss.bendoroll.constant.HandlerType;
 import com.zjamss.bendoroll.constant.ContentType;
 import com.zjamss.bendoroll.http.wrapper.HttpServletWrapper;
 import javafx.beans.binding.StringExpression;
-import jdk.internal.util.xml.impl.Input;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,7 +21,7 @@ import java.io.*;
 
 /**
  * @Program: cn.zjamss.bendoroll
- * @Description:
+ * @Description: 分发Servlet
  * @Author: ZJamss
  * @Create: 2022-08-03 21:07
  **/

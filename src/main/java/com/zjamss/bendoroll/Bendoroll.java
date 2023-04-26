@@ -27,19 +27,6 @@ import java.nio.file.Paths;
  **/
 public class Bendoroll {
 
-    public static void main(String[] args) {
-        Bendoroll app = Bendoroll
-                .create()
-                .fileAccess(true)
-                .fileFolderName("static");
-        app.get("/index",ctx -> {
-            ctx.file("index.html");
-        });
-        //or access host:port/filename to view it online
-        //for example localhost:8080/index.html
-        app.start();
-    }
-
     private static Bendoroll instance;
     private boolean STARTED = false;
     private int port = 8080;
